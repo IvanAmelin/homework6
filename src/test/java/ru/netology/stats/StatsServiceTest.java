@@ -11,50 +11,53 @@ class StatsServiceTest {
     @ParameterizedTest
     @CsvSource(value = {
             "'Сумма всех продаж', '8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18', 180",
-            })
-    void StatsService_SumSales(String testName, String massive, long expected) {
+    })
+    void statsService_SumSales(String testName, String massive, long expected) {
         //       int[] numbers = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
         int[] ints = Arrays.stream(massive.split(", ")).mapToInt(Integer::valueOf).toArray();
 
-        long actual = StatsService.SumOfSales(ints);
+        long actual = StatsService.sumOfSales(ints);
         // производим проверку (сравниваем ожидаемый и фактический):
         // если true - то PAS
         // если false - то FAIL
         assertEquals(expected, actual);
     }
+
     @ParameterizedTest
     @CsvSource(value = {
             "'Средняя сумма продаж в месяц', '8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18', 15",
     })
-    void StatsService_MeanSales(String testName, String massive, long expected) {
+    void statsService_MeanSales(String testName, String massive, long expected) {
         //       int[] numbers = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
         int[] ints = Arrays.stream(massive.split(", ")).mapToInt(Integer::valueOf).toArray();
 
-        double actual = StatsService.MeanSales(ints);
+        double actual = StatsService.meanSales(ints);
         // производим проверку (сравниваем ожидаемый и фактический):
         // если true - то PAS
         // если false - то FAIL
         assertEquals(expected, actual);
     }
+
     @ParameterizedTest
     @CsvSource(value = {
             "'Номер месяца, в котором был пик продаж', '8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18', 8",
     })
-    void StatsService_BestMounth(String testName, String massive, long expected) {
+    void statsService_BestMounth(String testName, String massive, long expected) {
         //       int[] numbers = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
         int[] ints = Arrays.stream(massive.split(", ")).mapToInt(Integer::valueOf).toArray();
 
-        long actual = StatsService.BestMounth(ints);
+        long actual = StatsService.bestMounth(ints);
         // производим проверку (сравниваем ожидаемый и фактический):
         // если true - то PAS
         // если false - то FAIL
         assertEquals(expected, actual);
     }
+
     @ParameterizedTest
     @CsvSource(value = {
             "'Номер месяца, в котором был минимум продаж', '8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18', 9",
     })
-    void StatsService_worstMounth(String testName, String massive, long expected) {
+    void statsService_worstMounth(String testName, String massive, long expected) {
         //       int[] numbers = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
         int[] ints = Arrays.stream(massive.split(", ")).mapToInt(Integer::valueOf).toArray();
 
@@ -64,29 +67,31 @@ class StatsServiceTest {
         // если false - то FAIL
         assertEquals(expected, actual);
     }
+
     @ParameterizedTest
     @CsvSource(value = {
             "'Кол-во месяцев, в которых продажи были ниже среднего', '8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18', 5",
     })
-    void StatsService_MounthQuantityBadSales(String testName, String massive, long expected) {
+    void statsService_MounthQuantityBadSales(String testName, String massive, long expected) {
         //       int[] numbers = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
         int[] ints = Arrays.stream(massive.split(", ")).mapToInt(Integer::valueOf).toArray();
 
-        long actual = StatsService.MounthQuantityBadSales(ints);
+        long actual = StatsService.mounthQuantityBadSales(ints);
         // производим проверку (сравниваем ожидаемый и фактический):
         // если true - то PAS
         // если false - то FAIL
         assertEquals(expected, actual);
     }
+
     @ParameterizedTest
     @CsvSource(value = {
             "'Кол-во месяцев, в которых продажи были выше среднего', '8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18', 5",
     })
-    void StatsService_MounthQuantityGoodSales(String testName, String massive, long expected) {
+    void statsService_MounthQuantityGoodSales(String testName, String massive, long expected) {
         //       int[] numbers = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
         int[] ints = Arrays.stream(massive.split(", ")).mapToInt(Integer::valueOf).toArray();
 
-        long actual = StatsService.MounthQuantityGoodSales(ints);
+        long actual = StatsService.mounthQuantityGoodSales(ints);
         // производим проверку (сравниваем ожидаемый и фактический):
         // если true - то PAS
         // если false - то FAIL
